@@ -20,6 +20,7 @@ const icons = {
     "erase": <EraseIcon />,
     "reset": <ResetIcon />,
     "save": <SaveIcon />
+    
 };
 
 
