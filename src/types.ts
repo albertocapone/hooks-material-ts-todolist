@@ -1,5 +1,6 @@
 export type Activity = {
     id: number,
-    title: String,
-    text: string
+    title: string,
+    text: string,
+    checked: boolean
 };

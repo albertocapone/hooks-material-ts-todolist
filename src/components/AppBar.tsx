@@ -1,14 +1,23 @@
 //React Imports
 import React from 'react';
+//Components
 import {default as EraseAllButton} from './MorphingButton';
 import {default as AddActivityButton} from './MorphingButton';
 
-const AppBar: React.FC = () => {
+
+
+type Props = {
+    resetActivities: () => void,
+    addActivityModal: () => void
+    disableResetButton: boolean
+};
+
+const AppBar: React.FC<Props> = ( {resetActivities, addActivityModal, disableResetButton} ) => {
     return (
         <header>
             <h2>MY NOTES</h2>
-            <EraseAllButton kind="erase-all">ERASE ALL! </EraseAllButton>
-            <AddActivityButton kind="add-activity">ADD ACTIVITY</AddActivityButton>
+            <EraseAllButton disabled={disableResetButton} kind="reset" action={resetActivities}>ERASE ALL!</EraseAllButton>
+            <AddActivityButton kind="add" action={addActivityModal}>ADD ACTIVITY</AddActivityButton>
         </header>
     );
 }

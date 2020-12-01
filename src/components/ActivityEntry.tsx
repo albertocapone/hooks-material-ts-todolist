@@ -1,19 +1,26 @@
+//React Imports
 import React from 'react';
+//Components
 import {default as EraseActivityButton} from './MorphingButton';
 
 type Props = {
-    key: number,
-    title: String,
-    text: String
+    id: number,
+    title: string,
+    text: string,
+    checked: boolean,
+    activityDetailsModal: (e: any) => void,
+    eraseActivity: (e: any) => void,
+    toggleActivityCheckmark: (e: any) => void
 };
 
-const ActivityEntry: React.FC<Props> = ( {title, text} ) => {
+
+const ActivityEntry: React.FC<Props> = ( {id, title, text, checked, activityDetailsModal, eraseActivity, toggleActivityCheckmark} ) => {
     return (
-        <li>
-            <input type='checkbox'/>
+        <li data-id={id} onClick={activityDetailsModal}>
+            <input type='checkbox' checked={checked} onChange={toggleActivityCheckmark} onClick={(e) => { e.stopPropagation(); }} />
             <h4>{title}</h4>
             <p>{text}</p>
-            <EraseActivityButton kind="erase-activity">ERASE ACTIVITY</EraseActivityButton>
+            <EraseActivityButton kind="erase" action={eraseActivity}>ERASE ACTIVITY</EraseActivityButton>
         </li>
     );
 }

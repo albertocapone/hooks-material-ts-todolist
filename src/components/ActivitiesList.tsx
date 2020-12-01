@@ -1,16 +1,37 @@
 //React Imports
 import React from 'react';
-import { Activity } from '../types';
+//Components
 import ActivityEntry from './ActivityEntry';
+//TS types
+import { Activity } from '../types';
+
+
 
 type Props = {
-    activities: Activity[]
+    activities: Activity[],
+    activityDetailsModal: (e: any) => void,
+    eraseActivity: (e: any) => void,
+    toggleActivityCheckmark: (e: any) => void
 };
 
-const ActivitiesList: React.FC<Props> = ( { activities } ) => {
+
+const ActivitiesList: React.FC<Props> = ( { activities, activityDetailsModal, eraseActivity, toggleActivityCheckmark } ) => {
     return (
         <ul>
-            {(activities.length > 0) ? activities.map( ({id, title, text}) => <ActivityEntry key={id} title={title} text={text}/>)  : "No activities yet!" }
+            {(activities.length > 0) ? 
+            activities.map( ({id, title, text, checked}) => 
+                <ActivityEntry 
+                key={id} 
+                id={id} 
+                title={title} 
+                text={text} 
+                checked={checked} 
+                activityDetailsModal={activityDetailsModal} 
+                eraseActivity={eraseActivity} 
+                toggleActivityCheckmark={toggleActivityCheckmark}
+                /> )  
+            : "No activities yet!" 
+            }
         </ul>
     );
 } 
