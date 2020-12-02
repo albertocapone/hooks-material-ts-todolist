@@ -37,7 +37,7 @@ const ActivitiesMaster: React.FC = () => {
         setActivities(filteredActivities);
     }
 
-    const saveActivity = (e: any) => {
+    const createActivity = (e: any) => {
         const newActivity = {
             id: Date.now(),
             title: e.currentTarget.closest('form').elements.title.value,
@@ -45,6 +45,20 @@ const ActivitiesMaster: React.FC = () => {
             checked: false
         };
         setActivities(activities.concat(newActivity));
+    }
+
+    const editActivity = (e: any) => {
+
+        const editedActivityID = Number(e.currentTarget.closest('form').getAttribute('data-id'));
+        const editedTitle =  e.currentTarget.closest('form').elements.title.value;
+        const editedText = e.currentTarget.closest('form').elements.text.value;
+
+        const editedActivities = activities.map( ( {id, title, text, checked} ) => {
+            if(id === editedActivityID) return {id, title: editedTitle, text: editedText, checked};
+            else return {id, title, text, checked};
+        });
+        
+        setActivities(editedActivities);
     }
 
     const toggleActivityCheckmark = (e: any) => {
@@ -57,7 +71,7 @@ const ActivitiesMaster: React.FC = () => {
     }
 
     return (
-        <ActivitiesDashboard activities={activities} resetActivities={resetActivities} saveActivity={saveActivity} eraseActivity={eraseActivity} toggleActivityCheckmark={toggleActivityCheckmark}/>
+        <ActivitiesDashboard activities={activities} resetActivities={resetActivities} editActivity={editActivity} createActivity={createActivity} eraseActivity={eraseActivity} toggleActivityCheckmark={toggleActivityCheckmark}/>
     );
 }
 

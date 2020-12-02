@@ -9,13 +9,14 @@ import { Activity } from '../types';
 
 type Props = {
     activities: Activity[],
-    activityDetailsModal: (e: any) => void,
+    openModal: (e: any, kind: string) => void,
     eraseActivity: (e: any) => void,
+    editActivity: (e: any) => void,
     toggleActivityCheckmark: (e: any) => void
 };
 
 
-const ActivitiesList: React.FC<Props> = ( { activities, activityDetailsModal, eraseActivity, toggleActivityCheckmark } ) => {
+const ActivitiesList: React.FC<Props> = ( { activities, openModal, editActivity, eraseActivity, toggleActivityCheckmark } ) => {
     return (
         <ul>
             {(activities.length > 0) ? 
@@ -26,7 +27,8 @@ const ActivitiesList: React.FC<Props> = ( { activities, activityDetailsModal, er
                 title={title} 
                 text={text} 
                 checked={checked} 
-                activityDetailsModal={activityDetailsModal} 
+                openModal={openModal} 
+                editActivity={editActivity}
                 eraseActivity={eraseActivity} 
                 toggleActivityCheckmark={toggleActivityCheckmark}
                 /> )  
