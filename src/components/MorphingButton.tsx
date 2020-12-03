@@ -1,7 +1,7 @@
 //React Imports
 import React from 'react';
 //Material Imports
-import { Button } from '@material-ui/core';
+import { IconButton, Typography } from '@material-ui/core';
 import ToCreateIcon from '@material-ui/icons/Add';
 import ToEditIcon from '@material-ui/icons/Edit';
 import EditIcon from '@material-ui/icons/Check';
@@ -30,7 +30,9 @@ const icons = {
 const MorphingButton: React.FC<Props> = ( {children, kind, action, disabled} ) => {
     const Icon = icons[kind];
     return (
-        <Button disabled={disabled} onClick={(e) => { e.stopPropagation(); action(e); } } variant="contained" color="primary" startIcon={<Icon />}>{children}</Button>
+        <Typography variant="button">
+            <IconButton disabled={disabled} onClick={(e) => { e.stopPropagation(); action(e); } } color="secondary" children={<Icon />} /> 
+        </Typography>
     );
 }
 

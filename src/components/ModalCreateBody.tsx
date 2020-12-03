@@ -1,6 +1,7 @@
 //React Imports
 import React from 'react';
 import { Card, CardContent, TextField, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import CreateActivityButton from './MorphingButton';
 import { Activity } from '../types';
 

@@ -27,11 +27,11 @@ const bodies = {
 };
 
 const MorphingModal: React.FC<Props> = ( {isOpen, contains, kind, closeModal, editActivity, createActivity} ) => {
-    
+
     const Body: any = bodies[kind];
 
     return (
-        <Modal open={isOpen} onClose={closeModal} >
+        <Modal open={isOpen} onClose={closeModal} disableEscapeKeyDown={false}>
             <Body contains={contains} create={createActivity} edit={editActivity}/>
         </Modal>
     );
