@@ -14,8 +14,10 @@ const useStyles = makeStyles({
         top: `50%`,
         left: `50%`,
         transform: `translate(-50%, -50%)`,
-        minWidth: 400,
-        border: "2px solid #000",
+        width: '320px',
+        maxHeight: '400px',
+        borderRadius: '10px',
+        outline: 'none'
         }
     }
 })

@@ -32,6 +32,13 @@ let theme = createMuiTheme({
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            backgroundImage: 'linear-gradient(360deg, #6a0080ab, #800080d1)'
+        },
+        '*::-webkit-scrollbar': {
+            width: '5px'
+        },
+       '*::-webkit-scrollbar-thumb': {
+           backgroundColor: '#6a0080ab',
         }
       },
     },

@@ -1,6 +1,6 @@
 //React
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Hidden } from '@material-ui/core';
 import { makeStyles } from  '@material-ui/styles';
 //Components
 import EraseActivityButton from '../button/MorphingButton';
@@ -11,7 +11,7 @@ import { ActivityEntryProps } from '../../containers/home/types';
 
 const useStyles = makeStyles({
     entry: {
-        padding: '2px 5px',
+        padding: '5px 15px',
         borderBottom: '1px dotted lightgray'
     },
     buttonGroup: {
@@ -29,25 +29,29 @@ const ActivityEntry: React.FC<ActivityEntryProps> = (props)  => {
     
     return (
         <Grid item container alignItems="center" component="li" className={classes.entry} data-id={id} onClick={ (e: any) => openModal(e, 'details')} >
-            <Grid item xs={1}>
+            <Grid item xs={1} sm={1} md={1}>
                  <input type='checkbox' checked={checked} onChange={toggleActivityCheckmark} onClick={(e) => { e.stopPropagation(); }} />
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={5} sm={4} md={2}>
                 <Typography variant="h6"> 
-                    {title}
+                    {title.length > 12 ? title.substr(0, 12) + "[...]" : title}
                 </Typography>
             </Grid>
-            <Grid item xs={4}>
-                <Typography variant="subtitle1"> 
-                    {text.substr(0, 15) + "[...]"}
-                </Typography>
-            </Grid>
-            <Grid item xs={2}>
+            <Hidden only={['xs', 'sm']}>
+                <Grid item md={4}>
+                    <Typography variant="subtitle1"> 
+                        {text.length > 15 ? text.substr(0, 15) + "[...]" : text}
+                    </Typography>
+                </Grid>
+            </Hidden>
+            <Hidden only={['xs']}>
+            <Grid item sm={3} md={2}>
                 <Typography variant="subtitle2"> 
                     {new Date(id).toLocaleDateString('it')}
                 </Typography>
             </Grid>
-            <Grid item xs={2}>
+            </Hidden>
+            <Grid item xs={6} sm={4} md={2}>
                 <EraseActivityButton kind="erase" action={eraseActivity}/>
                 <ToEditActivityButton  kind="to-edit" action={(e) => openModal(e, 'edit')}/>
             </Grid>

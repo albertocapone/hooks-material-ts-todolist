@@ -16,9 +16,10 @@ import { ModalState } from '../modal/types';
 const useStyles = makeStyles({
     dashboard: {
         backgroundColor: '#fafafa',
-        width: '85%',
-        height: '400px',
-        border: `5px solid black`,
+        boxShadow: '-1px 10px 13px -1px rgba(0,0,0,0.79)',
+        width: '90%',
+        minHeight: '120px',
+        maxHeight: '400px',
         borderRadius: "25px",
         overflow: 'hidden'
     }

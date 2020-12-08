@@ -12,10 +12,14 @@ import { HeaderProps } from '../../containers/home/types';
 
 const useStyles = makeStyles({
     header: {
-        backgroundImage: 'linear-gradient(345deg, purple, #a73fb6)',
-        height: '100px',
-        borderBottom: '4px solid red',
-        borderRadius: '20px'
+        backgroundImage: 'linear-gradient(345deg, #5e0a5e, #882c95)',
+        height: '85px',
+        boxShadow: '0px 5px 17px 2px rgba(245,44,44,0.86)',
+        borderRadius: '20px',
+        "& > h4": {
+            color: 'rgb(27 25 25 / 75%)',
+            fontWeight: 'bolder'
+        },
     },
     buttonGroup: {
         height: '30px',
@@ -29,9 +33,9 @@ const Header: React.FC<HeaderProps> = (props) => {
     const classes = useStyles();
 
     return (
-        <Box component="header" display="flex" alignItems="end" className={classes.header} p={4}>
+        <Box component="header" display="flex" alignItems="center" className={classes.header} p={2}>
 
-            <Typography variant="h3">MY NOTES</Typography>
+            <Typography variant="h4">MY NOTES</Typography>
 
             <Box display="flex" marginLeft="auto" justifyContent="space-between" className={classes.buttonGroup}>
 

@@ -7,7 +7,7 @@ import EraseIcon from '@material-ui/icons/Delete';
 import ResetIcon from '@material-ui/icons/RemoveCircle';
 
 
-const getIcon = (kind: string) => {
+const getIcon = (kind: "to-create" | "create" | "to-edit" | "edit" | "erase" | "reset") => {
     
     let icon;
     

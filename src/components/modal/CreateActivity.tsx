@@ -1,25 +1,34 @@
 //React
 import React from 'react';
 //Material
-import { Card, CardContent, TextField, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { Box, Card, CardContent, CardActionArea, TextField, Typography, CardActions } from '@material-ui/core';
+import { styled } from '@material-ui/styles';
 //Containers
 import CreateActivityButton from '../button/MorphingButton';
 //Types
 import { CreateActivityModalBodyProps } from '../../containers/modal/types';
 
+const MultilineText = styled(TextField)({
+    maxHeight: '200px',
+    overflowY: 'auto',
+    marginTop: '5px'
+});
 
 class ModalCreateBody extends React.Component<CreateActivityModalBodyProps> {
     render() {
         return (
             <Card tabIndex={-1}>
                 <CardContent>
-                    <Typography>CREATE A NEW ACTIVITY!</Typography>
-                    <form>
-                        <TextField label="Title" name="title" variant="outlined" />
-                        <TextField label="Text" name="text" variant="outlined" />
-                        <CreateActivityButton kind="create" action={this.props.action1} />
-                    </form>
+                    <Typography variant="h6" gutterBottom>Create a new activity!</Typography>
+                    <Box component="form" display="flex" flexDirection="column" justifyContent="space-between">
+                        <TextField label="Title" name="title" variant="filled" />
+                        <MultilineText label="Text" multiline={true} name="text" variant="filled"/>
+                    <CardActionArea>
+                        <CardActions>
+                            <CreateActivityButton kind="create" action={this.props.action1} />
+                        </CardActions>
+                    </CardActionArea>
+                    </Box>
                 </CardContent>
             </Card>
         );

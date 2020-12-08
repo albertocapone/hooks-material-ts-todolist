@@ -2,7 +2,7 @@
 import React from 'react';
 //Material
 import { makeStyles } from '@material-ui/styles';
-import { Grid } from '@material-ui/core';
+import { Box, Grid, Hidden } from '@material-ui/core';
 //Components
 import ActivityEntry from './ActivityEntry';
 //Types
@@ -11,18 +11,16 @@ import { ActivitiesListProps } from '../../containers/home/types';
 
 const useStyles = makeStyles({
     container: {
-        height: 'calc(100% - 100px)'
+        height: 'calc(100% - 85px)'
     },
     listHead: {
         height: '40px',
-        border: '1px solid lightgray'
+        paddingTop: '10px',
+        borderBottom: '1px solid lightgray'
     },
     list: {
-        height: 'calc(100% - 40px)',
+        maxHeight: '200px',
         overflowY: 'auto',
-        '& > div': {
-            padding: '5px 10px'
-        }
     }
 });
 
@@ -33,15 +31,19 @@ const ActivitiesList: React.FC<ActivitiesListProps> = (props) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.container}>
-            <Grid container alignItems="center" className={classes.listHead}>
-                    <Grid item xs={1}>{''}</Grid>
-                    <Grid item xs={2}>Title</Grid>
-                    <Grid item xs={4}>Text</Grid>
-                    <Grid item xs={2}>Date</Grid>
-                    <Grid item xs={2}>Actions</Grid>
+        <Grid container className={classes.container}>
+            <Grid item container alignItems="center" className={classes.listHead}>
+                    <Grid item xs={2} sm={1} md={1}>{''}</Grid>
+                    <Grid item xs={5} sm={4} md={2}>Title</Grid>
+                    <Hidden only={['xs', 'sm']}>
+                         <Grid item md={4}>Text</Grid>
+                    </Hidden>
+                    <Hidden only={['xs']}>
+                        <Grid item sm={3} md={2}>Date</Grid>
+                    </Hidden>
+                    <Grid item container xs={5} sm={4} md={2}>Actions</Grid>
             </Grid>
-            <Grid container component="ul" className={classes.list}>
+            <Grid item container component="ul" className={classes.list}>
                 {(activities.length > 0) ? activities.map( ({id, title, text, checked}) => 
                         <ActivityEntry 
                         key={id} 
@@ -57,7 +59,7 @@ const ActivitiesList: React.FC<ActivitiesListProps> = (props) => {
                         : ""
                         }
             </Grid>
-        </div>
+        </Grid>
     );
 } 
 

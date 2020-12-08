@@ -18,9 +18,7 @@ const MorphingButton: React.FC<IProps> = (props)  => {
     const Icon: any = getIcon(kind);
 
     return (
-        <Typography variant="button">
-            <IconButton disabled={disabled} onClick={(e) => { e.stopPropagation(); action(e); } } color="secondary" children={<Icon />} /> 
-        </Typography>
+        <IconButton disabled={disabled} onClick={(e) => { e.stopPropagation(); action(e); } } color="secondary" children={<Icon />} /> 
     );
 }
 
