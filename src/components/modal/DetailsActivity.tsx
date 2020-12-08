@@ -3,13 +3,11 @@ import React from 'react';
 //Material Imports
 import { Card, CardContent, Typography } from '@material-ui/core';
 //TS types
-import { Activity } from '../types';
+import { ActivityDetailsModalBodyProps } from '../../containers/modal/types';
 
-type Props = {
-    contains: Activity
-};
 
-class ModalDetailsBody extends React.Component<Props> {  //un componente funzionale generava warning - material modal vuole come children solo componenti che supportano ref
+
+class ModalDetailsBody extends React.Component<ActivityDetailsModalBodyProps> {  //un componente funzionale generava warning - material modal vuole come children solo componenti che supportano ref
     render() {
         return (
             <Card tabIndex={-1}>

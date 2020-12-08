@@ -32,7 +32,6 @@ let theme = createMuiTheme({
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            // backgroundImage: 'linear-gradient(360deg, purple, purple)'
         }
       },
     },

@@ -1,16 +1,15 @@
-//React Imports
+//React
 import React from 'react';
+//Material
 import { Card, CardContent, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import CreateActivityButton from './MorphingButton';
-import { Activity } from '../types';
+//Containers
+import CreateActivityButton from '../button/MorphingButton';
+//Types
+import { CreateActivityModalBodyProps } from '../../containers/modal/types';
 
-type Props = {
-    contains: Activity,
-    create: (e: any) => void
-}
 
-class ModalCreateBody extends React.Component<Props> {
+class ModalCreateBody extends React.Component<CreateActivityModalBodyProps> {
     render() {
         return (
             <Card tabIndex={-1}>
@@ -19,7 +18,7 @@ class ModalCreateBody extends React.Component<Props> {
                     <form>
                         <TextField label="Title" name="title" variant="outlined" />
                         <TextField label="Text" name="text" variant="outlined" />
-                        <CreateActivityButton kind="create" action={this.props.create} />
+                        <CreateActivityButton kind="create" action={this.props.action1} />
                     </form>
                 </CardContent>
             </Card>

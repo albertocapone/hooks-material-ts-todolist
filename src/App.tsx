@@ -1,12 +1,12 @@
 //React Imports
 import React from 'react';
 //Containers
-import ActivitiesMaster from './containers/ActivitiesMaster';
+import Home from './containers/home/Home';
 
 const App: React.FC = () => {
   return (
     <>
-      <ActivitiesMaster /> 
+      <Home /> 
     </>
   );
 }

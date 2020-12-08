@@ -1,23 +1,19 @@
-//React Imports
+//React
 import React from 'react';
+//Material
 import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 //Components
-import EraseAllButton from './MorphingButton';
-import ToCreateActivityButton from './MorphingButton';
+import ResetButton from '../button/MorphingButton';
+import ToCreateActivityButton from '../button/MorphingButton';
+//Types
+import { HeaderProps } from '../../containers/home/types';
 
-
-
-type Props = {
-    resetActivities: () => void,
-    openModal: (e: any, kind: string) => void
-    disableResetButton: boolean
-};
 
 const useStyles = makeStyles({
     header: {
         backgroundImage: 'linear-gradient(345deg, purple, #a73fb6)',
-        height: '130px',
+        height: '100px',
         borderBottom: '4px solid red',
         borderRadius: '20px'
     },
@@ -26,15 +22,32 @@ const useStyles = makeStyles({
     }
 });
 
-const Header: React.FC<Props> = ( {resetActivities, openModal, disableResetButton} ) => {
+const Header: React.FC<HeaderProps> = (props) => {
+
+    const {resetActivities, openModal, disableResetButton} = props;
+
     const classes = useStyles();
+
     return (
         <Box component="header" display="flex" alignItems="end" className={classes.header} p={4}>
+
             <Typography variant="h3">MY NOTES</Typography>
+
             <Box display="flex" marginLeft="auto" justifyContent="space-between" className={classes.buttonGroup}>
-                <EraseAllButton disabled={disableResetButton} kind="reset" action={resetActivities}/>
-                <ToCreateActivityButton kind="to-create" action={ (e) => openModal(e, 'create')}/>
+
+                <ResetButton 
+                disabled={disableResetButton} 
+                kind="reset" 
+                action={resetActivities}
+                />
+
+                <ToCreateActivityButton 
+                kind="to-create" 
+                action={ (e) => openModal(e, 'create') }
+                />
+
             </Box>
+
         </Box>
     );
 }
